@@ -7,7 +7,7 @@
 const int32_t kSensorRange = 1;
 
 Environment::Environment(Mower& mower, MowerOperator& op, Lawn& lawn, Position pos) :
-	mower_(mower), mower_operator_(op), lawn_(lawn), mower_pos_(pos) {
+	mower_(mower), mower_operator_(op), lawn_(lawn), mower_pos_(pos), time_(0) {
 	ExecuteState();
 }
 
@@ -15,10 +15,11 @@ void Environment::Step() {
 	const auto step = mower_operator_.Step(CurrentMowerView());
 	ExecuteStep(step);
 	ExecuteState();
+	time_++;
 }
 
 int32_t Environment::Score() const {
-	return lawn_.GetW() * lawn_.GetH() - 3*lawn_.UnmownLeft() + mower_.FuelLevel() + 25 * mower_.SharpnessLevel();
+	return lawn_.GetW() * lawn_.GetH() - 6*lawn_.UnmownLeft() + 3 * mower_.FuelLevel() + 60 * mower_.SharpnessLevel() - time_;
 }
 
 void Environment::PrintFullState() {

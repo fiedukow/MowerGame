@@ -23,5 +23,6 @@ private:
 	Mower& mower_;
 	MowerOperator& mower_operator_;
 	Lawn& lawn_;
+	int32_t time_;
 };
 

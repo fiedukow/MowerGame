@@ -10,6 +10,7 @@ int main() {
 	const int ROCKS = W*H*0.10;
 	Lawn lawn{ W, H, ROCKS };
 	Mower mower{ static_cast<uint32_t>(W*H*2), 3 };
+	//ManualMowerOperator manual_operator{};
 	SimpleMowerOperator manual_operator{};
 	Environment env{ mower, manual_operator, lawn };
 	while (mower.CanOperate() && lawn.UnmownLeft() > 0) {
