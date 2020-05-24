@@ -88,7 +88,7 @@ MowerStep ManualMowerOperator::Step(const MowerView& view) {
 
 MowerStep SimpleMowerOperator::Step(const MowerView& view) {
 	PrintMowerView(view);
-	Sleep(100);
+	//Sleep(100);
 	GroundType north = view.sensors[7];
 	GroundType south = view.sensors[1];
 	GroundType east = view.sensors[5];

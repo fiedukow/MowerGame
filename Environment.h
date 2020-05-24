@@ -10,6 +10,7 @@ public:
 
 	void Step();
 	void PrintFullState();
+	int32_t Score() const;
 
 private:
 	MowerView CurrentMowerView();

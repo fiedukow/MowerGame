@@ -17,11 +17,14 @@ void Environment::Step() {
 	ExecuteState();
 }
 
+int32_t Environment::Score() const {
+	return lawn_.GetW() * lawn_.GetH() - 3*lawn_.UnmownLeft() + mower_.FuelLevel() + 25 * mower_.SharpnessLevel();
+}
+
 void Environment::PrintFullState() {
 	system("CLS");
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	int score = lawn_.GetW() * lawn_.GetH() - lawn_.UnmownLeft() + mower_.FuelLevel() + 10 * mower_.SharpnessLevel();
-	std::cout << "           SCORE: " << score << std::endl;
+	std::cout << "           SCORE: " << Score() << std::endl;
 	std::cout << "========== GLOBAL VIEW ============" << std::endl;
 	for (int y = lawn_.GetH() - 1; y >= 0; --y) {
 		for (int x = 0; x < lawn_.GetW(); ++x) {
