@@ -74,6 +74,18 @@ void Environment::Evaluate(bool print_steps) {
 			PrintFullState();
 		Step();
 	}
+	if (print_steps) {
+		PrintFullState();
+		if (lawn_.UnmownLeft() == 0)
+			std::cout << "============ GAME OVER - NOTHING TO MOW!" << std::endl;
+		else if (!mower_.CanOperate())
+			std::cout << "============ GAME OVER - MOWER IS DEAD!" << std::endl;
+		std::cout << "===========================================" << std::endl;
+
+		std::cout << "===========================================" << std::endl;
+		std::cout << "============ SCORE: " << Score() << std::endl;
+		std::cout << "===========================================" << std::endl;
+	}
 }
 
 void Environment::Step() {
@@ -85,7 +97,7 @@ void Environment::Step() {
 
 int Environment::Score() const {
 	const int grass_points = 10 * (score_base_.init_grass - lawn_.UnmownLeft());
-	const int fuel_points = 3 * (mower_.FuelLevel() - score_base_.init_fuel);
+	const int fuel_points = 4 * (mower_.FuelLevel() - score_base_.init_fuel);
 	const int sharpness_points = 60 * (mower_.SharpnessLevel() - score_base_.init_sharpness);
 	const int time_points = -time_;
 	return grass_points + fuel_points + sharpness_points + time_points;

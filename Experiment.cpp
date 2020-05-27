@@ -20,8 +20,6 @@ int Experiment::EvaluateOnce(bool print_states) {
 	auto mower_operator = params_.operator_factory();
 	Environment env{ mower, *mower_operator, lawn };
 	env.Evaluate(print_states);
-	if (print_states)
-		env.PrintFullState();
 	return env.Score();
 }
 

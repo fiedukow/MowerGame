@@ -15,17 +15,5 @@ int main() {
 			[]() { return std::make_unique<SimpleMowerOperator>(); }} };
 	experiment.EvaluateOnce(true);
 	//std::cout << "Avg. score is: " << Experiment::AverageScore(experiment.ScoresOfEvaluations(1000)) << std::endl;
-
-	//env.PrintFullState();
-	//std::cout << "===========================================" << std::endl;
-	//if (lawn.UnmownLeft() == 0)
-	//	std::cout << "============ GAME OVER - NOTHING TO MOW!" << std::endl;
-	//else if (!mower.CanOperate())
-	//	std::cout << "============ GAME OVER - MOWER IS DEAD!" << std::endl;
-	//std::cout << "===========================================" << std::endl;
-
-	//std::cout << "===========================================" << std::endl;
-	//std::cout << "============ SCORE: " << env.Score() << std::endl;
-	//std::cout << "===========================================" << std::endl;
 	return 0;
 }
