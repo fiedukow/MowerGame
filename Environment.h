@@ -8,6 +8,7 @@ class Environment
 public:
 	Environment(Mower& mower, MowerOperator& op, Lawn& lawn, Position pos = { 0, 0 });
 
+	void Evaluate(bool print_steps);
 	void Step();
 	void PrintFullState();
 	int32_t Score() const;

@@ -63,6 +63,14 @@ Environment::Environment(Mower& mower, MowerOperator& op, Lawn& lawn, Position p
 	ExecuteState();
 }
 
+void Environment::Evaluate(bool print_steps) {
+	while (mower_.CanOperate() && lawn_.UnmownLeft() > 0) {
+		if (print_steps)
+			PrintFullState();
+		Step();
+	}
+}
+
 void Environment::Step() {
 	const auto step = mower_operator_.Step(CurrentMowerView());
 	ExecuteStep(step);

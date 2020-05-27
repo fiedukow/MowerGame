@@ -13,10 +13,7 @@ int main() {
 	//ManualMowerOperator manual_operator{};
 	SimpleMowerOperator manual_operator{};
 	Environment env{ mower, manual_operator, lawn };
-	while (mower.CanOperate() && lawn.UnmownLeft() > 0) {
-		env.PrintFullState();
-		env.Step();
-	}
+	env.Evaluate(false);
 
 	env.PrintFullState();
 	std::cout << "===========================================" << std::endl;
