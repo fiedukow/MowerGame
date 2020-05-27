@@ -3,8 +3,6 @@
 #include <vector>
 #include "Lawn.h"
 
-char ToCharWithCol(GroundType type);
-
 struct MowerView {
 	std::vector<GroundType> sensors;
 	uint32_t fuel_level;
