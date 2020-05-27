@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Experiment.cpp" />
     <ClCompile Include="Lawn.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mower.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Environment.h" />
+    <ClInclude Include="Experiment.h" />
     <ClInclude Include="Lawn.h" />
     <ClInclude Include="Mower.h" />
     <ClInclude Include="MowerOperator.h" />
