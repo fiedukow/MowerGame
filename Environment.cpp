@@ -58,8 +58,13 @@ void PrintMowerView(const MowerView& view) {
 	SetConsoleTextAttribute(hConsole, 15);
 }
 
-Environment::Environment(Mower& mower, MowerOperator& op, Lawn& lawn, Position pos) :
-	mower_(mower), mower_operator_(op), lawn_(lawn), mower_pos_(pos), time_(0) {
+Environment::Environment(Mower& mower, MowerOperator& op, Lawn& lawn, Position pos)
+	: score_base_({mower.FuelLevel(), mower.SharpnessLevel(), lawn.UnmownLeft() }),
+	  mower_(mower),
+	  mower_operator_(op),
+	  lawn_(lawn),
+	  mower_pos_(pos),
+	  time_(0) {
 	ExecuteState();
 }
 
@@ -78,8 +83,12 @@ void Environment::Step() {
 	time_++;
 }
 
-int32_t Environment::Score() const {
-	return lawn_.GetW() * lawn_.GetH() - 6*lawn_.UnmownLeft() + 3 * mower_.FuelLevel() + 60 * mower_.SharpnessLevel() - time_;
+int Environment::Score() const {
+	const int grass_points = 10 * (score_base_.init_grass - lawn_.UnmownLeft());
+	const int fuel_points = 3 * (mower_.FuelLevel() - score_base_.init_fuel);
+	const int sharpness_points = 60 * (mower_.SharpnessLevel() - score_base_.init_sharpness);
+	const int time_points = -time_;
+	return grass_points + fuel_points + sharpness_points + time_points;
 }
 
 void Environment::PrintFullState() {

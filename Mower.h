@@ -4,7 +4,7 @@
 class Mower
 {
 public:
-	Mower(uint32_t fuel, uint32_t sharpness);
+	Mower(int fuel, int sharpness);
 
 	void Step();
 	void HitRock();
@@ -14,12 +14,12 @@ public:
 
 	bool IsOn() const;
 	bool CanOperate() const;
-	uint32_t FuelLevel() const;
-	uint32_t SharpnessLevel() const;
+	int FuelLevel() const;
+	int SharpnessLevel() const;
 
 private:
 	bool is_on_;
-	uint32_t fuel_;
-	uint32_t sharpness_;
+	int fuel_;
+	int sharpness_;
 };
 

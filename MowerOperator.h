@@ -5,8 +5,8 @@
 
 struct MowerView {
 	std::vector<GroundType> sensors;
-	uint32_t fuel_level;
-	uint32_t sharpness_level;
+	int fuel_level;
+	int sharpness_level;
 	bool is_on;
 };
 

@@ -13,7 +13,8 @@ int main() {
 		ExperimentParameters{
 			W, H, ROCKS, FUEL, SHARPNESS,
 			[]() { return std::make_unique<SimpleMowerOperator>(); }} };
-	std::cout << "Avg. score is: " << Experiment::AverageScore(experiment.ScoresOfEvaluations(1000)) << std::endl;
+	experiment.EvaluateOnce(true);
+	//std::cout << "Avg. score is: " << Experiment::AverageScore(experiment.ScoresOfEvaluations(1000)) << std::endl;
 
 	//env.PrintFullState();
 	//std::cout << "===========================================" << std::endl;

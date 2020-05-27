@@ -3,6 +3,12 @@
 #include "MowerOperator.h"
 #include "Mower.h"
 
+struct ScoreBase {
+	int init_fuel;
+	int init_sharpness;
+	int init_grass;
+};
+
 class Environment
 {
 public:
@@ -11,7 +17,7 @@ public:
 	void Evaluate(bool print_steps);
 	void Step();
 	void PrintFullState();
-	int32_t Score() const;
+	int Score() const;
 
 private:
 	MowerView CurrentMowerView();
@@ -20,6 +26,7 @@ private:
 	void ExecuteState();
 
 private:
+	const ScoreBase score_base_;
 	Position mower_pos_;
 	Mower& mower_;
 	MowerOperator& mower_operator_;

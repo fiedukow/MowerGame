@@ -9,8 +9,8 @@ struct ExperimentParameters {
 	int width;
 	int height;
 	int no_rocks;
-	uint32_t mower_fuel;
-	uint32_t mower_sharpness;
+	int mower_fuel;
+	int mower_sharpness;
 	std::function<std::unique_ptr<MowerOperator>()> operator_factory;
 };
 
@@ -19,7 +19,7 @@ class Experiment
 public:
 	explicit Experiment(ExperimentParameters params);
 	std::vector<int> ScoresOfEvaluations(int no_repeats);
-	int EvaluateOnce();
+	int EvaluateOnce(bool print_states = false);
 
 	static int AverageScore(std::vector<int> scores);
 

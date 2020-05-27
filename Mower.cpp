@@ -1,6 +1,6 @@
 #include "Mower.h"
 
-Mower::Mower(uint32_t fuel, uint32_t sharpness) :
+Mower::Mower(int fuel, int sharpness) :
 	is_on_(true), fuel_(fuel), sharpness_(sharpness) {
 }
 
@@ -34,10 +34,10 @@ bool Mower::CanOperate() const {
 	return fuel_ > 0 && sharpness_ > 0;
 }
 
-uint32_t Mower::FuelLevel() const {
+int Mower::FuelLevel() const {
 	return fuel_;
 }
 
-uint32_t Mower::SharpnessLevel() const {
+int Mower::SharpnessLevel() const {
 	return sharpness_;
 }
